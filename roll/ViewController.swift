@@ -17,8 +17,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // separator style none
+        // styles for cell
         tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.clearColor()
         
         // background gradient
         self.view.backgroundColor = UIColor.blackColor()
@@ -65,6 +66,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         let item = taskItems[indexPath.row]
         cell.textLabel?.text = item.text
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        
+        cell.backgroundColor = UIColor.clearColor()
         return cell
     }
 
