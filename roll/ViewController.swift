@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate {
     var gradientLayer = CAGradientLayer()
     var taskItems = [TaskItem]()
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // default content
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         
         if taskItems.count > 0 {
             return
@@ -51,6 +51,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    func deleteTaskItem(taskItem: TaskItem) {
+        let index = (taskItems as NSArray).indexOfObject(taskItem)
+        if index == NSNotFound { return }
+        
+        // could removeAtIndex in the loop but keep it here for when indexOfObject works
+        taskItems.removeAtIndex(index)
+        
+        // use the UITableView to animate the removal of this row
+        tableView.beginUpdates()
+        let indexPathForRow = NSIndexPath(forRow: index, inSection: 0)
+        tableView.deleteRowsAtIndexPaths([indexPathForRow], withRowAnimation: .Fade)
+        tableView.endUpdates()
+    }
+    
 
     // MARK: - Table view data source
     
@@ -63,7 +78,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell
         let item = taskItems[indexPath.row]
         cell.textLabel?.text = item.text
         cell.textLabel?.textColor = UIColor.whiteColor()
@@ -73,6 +88,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         cell.backgroundColor = UIColor.clearColor()
+        cell.delegate = self
+        cell.taskItem = item
+        
         return cell
     }
 
