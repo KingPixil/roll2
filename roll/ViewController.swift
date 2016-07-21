@@ -67,7 +67,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let item = taskItems[indexPath.row]
         cell.textLabel?.text = item.text
         cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size:13)
         cell.textLabel?.adjustsFontSizeToFitWidth = true
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
         
         cell.backgroundColor = UIColor.clearColor()
         return cell
