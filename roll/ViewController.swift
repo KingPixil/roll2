@@ -48,6 +48,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let defaultItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
         
         defaultItem.task = "Swipe down to create, swipe left/right to delete"
+        updateTasks()
         
     }
     
@@ -72,7 +73,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         newItem.task = task
         
-        reload()
+        updateTasks()
     }
     
     func deleteTaskItem(taskItem: TaskItem) {
@@ -80,19 +81,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         if index == NSNotFound { return }
         
         // could removeAtIndex in the loop but keep it here for when indexOfObject works
-        taskItems!.removeAtIndex(index)
+        //taskItems!.removeAtIndex(index)
         
+        managedObjectContext.deleteObject(taskItems![index])
+        updateTasks()
         // use the UITableView to animate the removal of this row
         tableView.beginUpdates()
         let indexPathForRow = NSIndexPath(forRow: index, inSection: 0)
         tableView.deleteRowsAtIndexPaths([indexPathForRow], withRowAnimation: .Fade)
         tableView.endUpdates()
+        
     }
     
-    func reload() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            self.tableView.reloadData()
-        })
+    func updateTasks() -> [TaskItem]? {
+        do {
+            let fetchRequest = NSFetchRequest(entityName: "TaskItem")
+            let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [TaskItem]
+            taskItems = fetchResults!
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+            return taskItems!
+        } catch let error as NSError {
+            // failure
+            print("Fetch failed: \(error.localizedDescription)")
+            return nil
+        }
     }
     
     
@@ -113,13 +127,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskItems.count
+        return taskItems!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! TableViewCell
-        let item = taskItems[indexPath.row]
-        cell.textLabel?.text = item.text
+        let item = taskItems![indexPath.row]
+        cell.textLabel?.text = item.task
         cell.textLabel?.textColor = UIColor.whiteColor()
         cell.textLabel?.font = UIFont(name: (cell.textLabel?.font.fontName)!, size:13)
         cell.textLabel?.adjustsFontSizeToFitWidth = true
