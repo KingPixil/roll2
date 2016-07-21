@@ -42,7 +42,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Ofj-7E-15m" id="jf6-AX-zPf"/>
-                        <segue destination="QTH-lH-7sV" kind="presentation" id="ONE-Na-Qks"/>
+                        <segue destination="QTH-lH-7sV" kind="presentation" identifier="newTaskSwipe" id="3gH-l9-DgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -52,7 +52,7 @@
         <!--NewTask-->
         <scene sceneID="jPp-um-vRr">
             <objects>
-                <viewController title="NewTask" modalPresentationStyle="overCurrentContext" id="QTH-lH-7sV" sceneMemberID="viewController">
+                <viewController title="NewTask" modalPresentationStyle="overCurrentContext" id="QTH-lH-7sV" customClass="NewTaskController" customModule="roll" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KK8-cg-q7P"/>
                         <viewControllerLayoutGuide type="bottom" id="Muy-MU-vEy"/>
@@ -79,6 +79,9 @@
                                         <rect key="frame" x="167" y="0.0" width="30" height="30"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
                                         <state key="normal" title="X"/>
+                                        <connections>
+                                            <segue destination="thj-xy-7CW" kind="unwind" unwindAction="unwindFromNewTask:" id="aY3-y5-UXJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,14 +95,18 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PFL-cK-wqI" firstAttribute="centerY" secondItem="zwD-v6-YYS" secondAttribute="centerY" id="5Z0-LO-QcT"/>
                             <constraint firstItem="PFL-cK-wqI" firstAttribute="centerX" secondItem="zwD-v6-YYS" secondAttribute="centerX" id="PLQ-iG-f7G"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="popupView" destination="PFL-cK-wqI" id="dMs-gd-8tL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O15-Cg-xC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="thj-xy-7CW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1021" y="361"/>
         </scene>

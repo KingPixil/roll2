@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate, Dimmable {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, TableViewCellDelegate, Dimmable {
     
     var gradientLayer = CAGradientLayer()
     var taskItems = [TaskItem]()
     
+    let systemSoundId: SystemSoundID = 1117
     let dimLevel: CGFloat = 0.5
     let dimSpeed: Double = 0.5
     
@@ -45,7 +47,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskItems.append(TaskItem(text: "here are your tasks"))
         taskItems.append(TaskItem(text: "swipe down to create one"))
         taskItems.append(TaskItem(text: "swipe left or right to delete"))
-        
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -60,7 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         dim(.In, alpha: dimLevel, speed: dimSpeed)
     }
     
-    @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
+    @IBAction func unwindFromNewTask(segue: UIStoryboardSegue) {
         dim(.Out, speed: dimSpeed)
     }
     
@@ -76,6 +77,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let indexPathForRow = NSIndexPath(forRow: index, inSection: 0)
         tableView.deleteRowsAtIndexPaths([indexPathForRow], withRowAnimation: .Fade)
         tableView.endUpdates()
+    }
+    
+    func refresh(sender:AnyObject) {
+        print("Swipe Down")
+        AudioServicesPlaySystemSound(systemSoundId)
+        //refreshControl.endRefreshing()
+        performSegueWithIdentifier("newTaskSwipe", sender: sender)
+        
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // check whether the user pulled down far enough
+        if -scrollView.contentOffset.y > tableView.rowHeight {
+            AudioServicesPlaySystemSound(systemSoundId)
+            //refreshControl.endRefreshing()
+            performSegueWithIdentifier("newTaskSwipe", sender: scrollView)
+        }
     }
     
 
