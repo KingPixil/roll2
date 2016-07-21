@@ -13,7 +13,7 @@ import CoreData
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, TableViewCellDelegate, Dimmable {
     
     var gradientLayer = CAGradientLayer()
-    var taskItems = [TaskItem]()
+    var taskItems: [TaskItem]?
     
     let systemSoundId: SystemSoundID = 1117
     let dimLevel: CGFloat = 0.5
@@ -76,11 +76,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func deleteTaskItem(taskItem: TaskItem) {
-        let index = (taskItems as NSArray).indexOfObject(taskItem)
+        let index = (taskItems! as NSArray).indexOfObject(taskItem)
         if index == NSNotFound { return }
         
         // could removeAtIndex in the loop but keep it here for when indexOfObject works
-        taskItems.removeAtIndex(index)
+        taskItems!.removeAtIndex(index)
         
         // use the UITableView to animate the removal of this row
         tableView.beginUpdates()
