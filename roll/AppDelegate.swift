@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  roll
 //
-//  Created by Gopal Shah on 7/21/16.
+//  Created by Kabir Shah on 7/21/16.
 //  Copyright © 2016 Kabir Shah. All rights reserved.
 //
 
