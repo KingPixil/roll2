@@ -17,6 +17,8 @@
 		285D30DE1D412D8700A6E7C4 /* rollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30DD1D412D8700A6E7C4 /* rollUITests.swift */; };
 		285D30EC1D41382700A6E7C4 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30EB1D41382700A6E7C4 /* TaskItem.swift */; };
 		285D30EE1D4150E500A6E7C4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */; };
+		285D30F01D41691000A6E7C4 /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30EF1D41691000A6E7C4 /* Dimmable.swift */; };
+		285D30F21D416BBD00A6E7C4 /* NewTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30F11D416BBD00A6E7C4 /* NewTaskController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		285D30DF1D412D8700A6E7C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		285D30EB1D41382700A6E7C4 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		285D30EF1D41691000A6E7C4 /* Dimmable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
+		285D30F11D416BBD00A6E7C4 /* NewTaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 			children = (
 				285D30BA1D412D8700A6E7C4 /* AppDelegate.swift */,
 				285D30BC1D412D8700A6E7C4 /* ViewController.swift */,
+				285D30F11D416BBD00A6E7C4 /* NewTaskController.swift */,
 				285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */,
 				285D30EB1D41382700A6E7C4 /* TaskItem.swift */,
 				285D30BE1D412D8700A6E7C4 /* Main.storyboard */,
@@ -112,6 +117,7 @@
 				285D30C61D412D8700A6E7C4 /* LaunchScreen.storyboard */,
 				285D30C91D412D8700A6E7C4 /* Info.plist */,
 				285D30C11D412D8700A6E7C4 /* roll.xcdatamodeld */,
+				285D30EF1D41691000A6E7C4 /* Dimmable.swift */,
 			);
 			path = roll;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 			files = (
 				285D30EE1D4150E500A6E7C4 /* TableViewCell.swift in Sources */,
 				285D30BD1D412D8700A6E7C4 /* ViewController.swift in Sources */,
+				285D30F01D41691000A6E7C4 /* Dimmable.swift in Sources */,
+				285D30F21D416BBD00A6E7C4 /* NewTaskController.swift in Sources */,
 				285D30C31D412D8700A6E7C4 /* roll.xcdatamodeld in Sources */,
 				285D30BB1D412D8700A6E7C4 /* AppDelegate.swift in Sources */,
 				285D30EC1D41382700A6E7C4 /* TaskItem.swift in Sources */,

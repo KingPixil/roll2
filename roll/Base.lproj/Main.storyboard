@@ -42,11 +42,66 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Ofj-7E-15m" id="jf6-AX-zPf"/>
+                        <segue destination="QTH-lH-7sV" kind="presentation" id="ONE-Na-Qks"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="361"/>
+            <point key="canvasLocation" x="310" y="361"/>
+        </scene>
+        <!--NewTask-->
+        <scene sceneID="jPp-um-vRr">
+            <objects>
+                <viewController title="NewTask" modalPresentationStyle="overCurrentContext" id="QTH-lH-7sV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KK8-cg-q7P"/>
+                        <viewControllerLayoutGuide type="bottom" id="Muy-MU-vEy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zwD-v6-YYS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PFL-cK-wqI">
+                                <rect key="frame" x="202" y="236" width="197" height="127"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="NEW TASK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QxU-qS-nTd">
+                                        <rect key="frame" x="56" y="28" width="84" height="21"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5dk-zb-JSv">
+                                        <rect key="frame" x="50" y="71" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1P-jj-cGX">
+                                        <rect key="frame" x="167" y="0.0" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
+                                        <state key="normal" title="X"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="QxU-qS-nTd" firstAttribute="centerX" secondItem="PFL-cK-wqI" secondAttribute="centerX" id="3BT-Kz-BWx"/>
+                                    <constraint firstAttribute="trailing" secondItem="j1P-jj-cGX" secondAttribute="trailing" id="3Gi-Id-qZm"/>
+                                    <constraint firstAttribute="width" constant="197" id="3f4-Rw-34S"/>
+                                    <constraint firstAttribute="height" constant="127" id="Dhx-pg-Vnd"/>
+                                    <constraint firstItem="5dk-zb-JSv" firstAttribute="centerX" secondItem="PFL-cK-wqI" secondAttribute="centerX" id="wj0-C9-ogA"/>
+                                    <constraint firstItem="j1P-jj-cGX" firstAttribute="top" secondItem="PFL-cK-wqI" secondAttribute="top" id="z7I-Qj-ZJ6"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PFL-cK-wqI" firstAttribute="centerY" secondItem="zwD-v6-YYS" secondAttribute="centerY" id="5Z0-LO-QcT"/>
+                            <constraint firstItem="PFL-cK-wqI" firstAttribute="centerX" secondItem="zwD-v6-YYS" secondAttribute="centerX" id="PLQ-iG-f7G"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O15-Cg-xC5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1021" y="361"/>
         </scene>
     </scenes>
 </document>

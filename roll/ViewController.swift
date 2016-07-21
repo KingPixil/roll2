@@ -8,9 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TableViewCellDelegate, Dimmable {
+    
     var gradientLayer = CAGradientLayer()
     var taskItems = [TaskItem]()
+    
+    let dimLevel: CGFloat = 0.5
+    let dimSpeed: Double = 0.5
     
     @IBOutlet var tableView: UITableView!
     
@@ -50,6 +54,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        dim(.In, alpha: dimLevel, speed: dimSpeed)
+    }
+    
+    @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
+        dim(.Out, speed: dimSpeed)
     }
     
     func deleteTaskItem(taskItem: TaskItem) {

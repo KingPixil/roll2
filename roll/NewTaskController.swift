@@ -1,0 +1,24 @@
+//
+//  NewTaskController.swift
+//  roll
+//
+//  Created by Kabir Shah on 7/21/16.
+//  Copyright © 2016 Kabir Shah. All rights reserved.
+//
+
+import UIKit
+
+class NewTaskController: UITableViewCell {
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
