@@ -14,7 +14,7 @@ class TaskItem: NSObject {
     var completed: Bool
     
     init(text: String) {
-        self.text = text
+        self.text = text.uppercaseString
         self.completed = false
     }
 }
