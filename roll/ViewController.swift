@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var gradientLayer = CAGradientLayer()
+    var taskItems = [TaskItem]()
     
     @IBOutlet var tableView: UITableView!
     
