@@ -109,15 +109,15 @@
 			children = (
 				285D30BA1D412D8700A6E7C4 /* AppDelegate.swift */,
 				285D30BC1D412D8700A6E7C4 /* ViewController.swift */,
+				285D30F31D416C1C00A6E7C4 /* NewTaskController.swift */,
 				285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */,
 				285D30EB1D41382700A6E7C4 /* TaskItem.swift */,
+				285D30EF1D41691000A6E7C4 /* Dimmable.swift */,
 				285D30BE1D412D8700A6E7C4 /* Main.storyboard */,
 				285D30C41D412D8700A6E7C4 /* Assets.xcassets */,
 				285D30C61D412D8700A6E7C4 /* LaunchScreen.storyboard */,
 				285D30C91D412D8700A6E7C4 /* Info.plist */,
 				285D30C11D412D8700A6E7C4 /* roll.xcdatamodeld */,
-				285D30EF1D41691000A6E7C4 /* Dimmable.swift */,
-				285D30F31D416C1C00A6E7C4 /* NewTaskController.swift */,
 			);
 			path = roll;
 			sourceTree = "<group>";

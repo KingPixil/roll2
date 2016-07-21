@@ -8,9 +8,12 @@
 
 import UIKit
 
-class NewTaskController: UIViewController {
+class NewTaskController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var popupView: UIView!
+    @IBOutlet var taskTextField: UITextField!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +26,27 @@ class NewTaskController: UIViewController {
         popupView.layer.shadowRadius = 15
         popupView.layer.shadowOffset = CGSize(width: 5, height: 5)
         popupView.layer.masksToBounds = false
+        
+        taskTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        taskTextField.resignFirstResponder()
+        TaskItem(text: taskTextField.text!)
+        
+        return true
+    }
+    
 
 
 }

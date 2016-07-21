@@ -103,6 +103,7 @@
                     </view>
                     <connections>
                         <outlet property="popupView" destination="PFL-cK-wqI" id="dMs-gd-8tL"/>
+                        <outlet property="taskTextField" destination="5dk-zb-JSv" id="i6p-CB-wGv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O15-Cg-xC5" userLabel="First Responder" sceneMemberID="firstResponder"/>

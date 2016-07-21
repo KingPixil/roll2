@@ -17,6 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let systemSoundId: SystemSoundID = 1117
     let dimLevel: CGFloat = 0.5
     let dimSpeed: Double = 0.5
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet var tableView: UITableView!
     
@@ -30,8 +31,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // background gradient
         self.view.backgroundColor = UIColor.blackColor()
         gradientLayer.frame = self.view.bounds
-        let color1 = UIColor(red: 0.20, green: 0.56, blue: 0.31, alpha: 1.0).CGColor as CGColorRef
-        let color2 = UIColor(red: 0.34, green: 0.71, blue: 0.83, alpha: 1.0).CGColor as CGColorRef
+        let color1 = UIColor(red:0.14, green:0.78, blue:0.86, alpha:1.0).CGColor as CGColorRef
+        let color2 = UIColor(red:0.14, green:0.86, blue:0.65, alpha:1.0).CGColor as CGColorRef
         gradientLayer.colors = [color1, color2]
         gradientLayer.locations = [0.0, 1.0]
         self.view.layer.insertSublayer(gradientLayer, atIndex:0)
@@ -39,6 +40,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // default content
         tableView.dataSource = self
         tableView.delegate = self
+        
+        
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         
         if taskItems.count > 0 {
@@ -47,6 +50,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         taskItems.append(TaskItem(text: "here are your tasks"))
         taskItems.append(TaskItem(text: "swipe down to create one"))
         taskItems.append(TaskItem(text: "swipe left or right to delete"))
+        
     }
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -65,6 +69,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         dim(.Out, speed: dimSpeed)
     }
     
+    func addTaskItem(taskItem: TaskItem) {
+        taskItems.insert(taskItem, atIndex: 0)
+        print("added item")
+        print(taskItems[0].text)
+        reload()
+    }
+    
     func deleteTaskItem(taskItem: TaskItem) {
         let index = (taskItems as NSArray).indexOfObject(taskItem)
         if index == NSNotFound { return }
@@ -79,13 +90,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.endUpdates()
     }
     
-    func refresh(sender:AnyObject) {
-        print("Swipe Down")
-        AudioServicesPlaySystemSound(systemSoundId)
-        //refreshControl.endRefreshing()
-        performSegueWithIdentifier("newTaskSwipe", sender: sender)
-        
+    func reload() {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
     }
+    
     
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         // check whether the user pulled down far enough

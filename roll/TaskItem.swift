@@ -11,10 +11,7 @@ import UIKit
 class TaskItem: NSObject {
     var text: String
     
-    var completed: Bool
-    
     init(text: String) {
         self.text = text.uppercaseString
-        self.completed = false
     }
 }
