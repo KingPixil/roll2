@@ -29,6 +29,10 @@ class ViewController: UIViewController {
         self.view.layer.insertSublayer(gradientLayer, atIndex:0)
         
     }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
 
     override func prefersStatusBarHidden() -> Bool {
         return true
