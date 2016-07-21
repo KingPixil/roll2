@@ -45,9 +45,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
+        let defaultItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
         
-        newItem.task = "Swipe down to create, swipe left/right to delete"
+        defaultItem.task = "Swipe down to create, swipe left/right to delete"
         
     }
     
@@ -67,10 +67,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         dim(.Out, speed: dimSpeed)
     }
     
-    func addTaskItem(taskItem: TaskItem) {
-        taskItems.insert(taskItem, atIndex: 0)
-        print("added item")
-        print(taskItems[0].text)
+    func addTaskItem(task: String) {
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
+        
+        newItem.task = task
+        
         reload()
     }
     
