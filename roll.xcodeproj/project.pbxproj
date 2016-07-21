@@ -15,10 +15,11 @@
 		285D30C81D412D8700A6E7C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285D30C61D412D8700A6E7C4 /* LaunchScreen.storyboard */; };
 		285D30D31D412D8700A6E7C4 /* rollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30D21D412D8700A6E7C4 /* rollTests.swift */; };
 		285D30DE1D412D8700A6E7C4 /* rollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30DD1D412D8700A6E7C4 /* rollUITests.swift */; };
-		285D30EC1D41382700A6E7C4 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30EB1D41382700A6E7C4 /* TaskItem.swift */; };
 		285D30EE1D4150E500A6E7C4 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */; };
 		285D30F01D41691000A6E7C4 /* Dimmable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30EF1D41691000A6E7C4 /* Dimmable.swift */; };
 		285D30F41D416C1C00A6E7C4 /* NewTaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30F31D416C1C00A6E7C4 /* NewTaskController.swift */; };
+		285D30F71D418D0900A6E7C4 /* TaskItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30F51D418D0900A6E7C4 /* TaskItem+CoreDataProperties.swift */; };
+		285D30F81D418D0900A6E7C4 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30F61D418D0900A6E7C4 /* TaskItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +54,11 @@
 		285D30D91D412D8700A6E7C4 /* rollUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rollUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		285D30DD1D412D8700A6E7C4 /* rollUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rollUITests.swift; sourceTree = "<group>"; };
 		285D30DF1D412D8700A6E7C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		285D30EB1D41382700A6E7C4 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 		285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		285D30EF1D41691000A6E7C4 /* Dimmable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimmable.swift; sourceTree = "<group>"; };
 		285D30F31D416C1C00A6E7C4 /* NewTaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTaskController.swift; sourceTree = "<group>"; };
+		285D30F51D418D0900A6E7C4 /* TaskItem+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TaskItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		285D30F61D418D0900A6E7C4 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,8 @@
 		285D30AE1D412D8700A6E7C4 = {
 			isa = PBXGroup;
 			children = (
+				285D30F51D418D0900A6E7C4 /* TaskItem+CoreDataProperties.swift */,
+				285D30F61D418D0900A6E7C4 /* TaskItem.swift */,
 				285D30B91D412D8700A6E7C4 /* roll */,
 				285D30D11D412D8700A6E7C4 /* rollTests */,
 				285D30DC1D412D8700A6E7C4 /* rollUITests */,
@@ -111,7 +115,6 @@
 				285D30BC1D412D8700A6E7C4 /* ViewController.swift */,
 				285D30F31D416C1C00A6E7C4 /* NewTaskController.swift */,
 				285D30ED1D4150E500A6E7C4 /* TableViewCell.swift */,
-				285D30EB1D41382700A6E7C4 /* TaskItem.swift */,
 				285D30EF1D41691000A6E7C4 /* Dimmable.swift */,
 				285D30BE1D412D8700A6E7C4 /* Main.storyboard */,
 				285D30C41D412D8700A6E7C4 /* Assets.xcassets */,
@@ -274,10 +277,11 @@
 				285D30EE1D4150E500A6E7C4 /* TableViewCell.swift in Sources */,
 				285D30BD1D412D8700A6E7C4 /* ViewController.swift in Sources */,
 				285D30F01D41691000A6E7C4 /* Dimmable.swift in Sources */,
+				285D30F71D418D0900A6E7C4 /* TaskItem+CoreDataProperties.swift in Sources */,
+				285D30F81D418D0900A6E7C4 /* TaskItem.swift in Sources */,
 				285D30C31D412D8700A6E7C4 /* roll.xcdatamodeld in Sources */,
 				285D30BB1D412D8700A6E7C4 /* AppDelegate.swift in Sources */,
 				285D30F41D416C1C00A6E7C4 /* NewTaskController.swift in Sources */,
-				285D30EC1D41382700A6E7C4 /* TaskItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

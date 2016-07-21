@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, TableViewCellDelegate, Dimmable {
     
@@ -44,12 +45,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         
-        if taskItems.count > 0 {
-            return
-        }
-        taskItems.append(TaskItem(text: "here are your tasks"))
-        taskItems.append(TaskItem(text: "swipe down to create one"))
-        taskItems.append(TaskItem(text: "swipe left or right to delete"))
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
+        
+        newItem.task = "Swipe down to create, swipe left/right to delete"
         
     }
     

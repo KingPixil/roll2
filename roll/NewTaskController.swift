@@ -42,7 +42,6 @@ class NewTaskController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         taskTextField.resignFirstResponder()
-        TaskItem(text: taskTextField.text!)
         
         return true
     }
