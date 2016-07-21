@@ -15,6 +15,7 @@
 		285D30C81D412D8700A6E7C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 285D30C61D412D8700A6E7C4 /* LaunchScreen.storyboard */; };
 		285D30D31D412D8700A6E7C4 /* rollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30D21D412D8700A6E7C4 /* rollTests.swift */; };
 		285D30DE1D412D8700A6E7C4 /* rollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30DD1D412D8700A6E7C4 /* rollUITests.swift */; };
+		285D30EC1D41382700A6E7C4 /* TaskItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285D30EB1D41382700A6E7C4 /* TaskItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		285D30D91D412D8700A6E7C4 /* rollUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rollUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		285D30DD1D412D8700A6E7C4 /* rollUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rollUITests.swift; sourceTree = "<group>"; };
 		285D30DF1D412D8700A6E7C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		285D30EB1D41382700A6E7C4 /* TaskItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				285D30BA1D412D8700A6E7C4 /* AppDelegate.swift */,
 				285D30BC1D412D8700A6E7C4 /* ViewController.swift */,
+				285D30EB1D41382700A6E7C4 /* TaskItem.swift */,
 				285D30BE1D412D8700A6E7C4 /* Main.storyboard */,
 				285D30C41D412D8700A6E7C4 /* Assets.xcassets */,
 				285D30C61D412D8700A6E7C4 /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 				285D30BD1D412D8700A6E7C4 /* ViewController.swift in Sources */,
 				285D30C31D412D8700A6E7C4 /* roll.xcdatamodeld in Sources */,
 				285D30BB1D412D8700A6E7C4 /* AppDelegate.swift in Sources */,
+				285D30EC1D41382700A6E7C4 /* TaskItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
