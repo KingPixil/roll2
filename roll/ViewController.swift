@@ -20,15 +20,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let dimSpeed: Double = 0.5
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
+    
     @IBOutlet var tableView: UITableView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // styles for cell
-        tableView.separatorStyle = .None
-        tableView.backgroundColor = UIColor.clearColor()
-        
+        let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
+        if launchedBefore  {
+            print("Not first launch.")
+        }
+        else {
+            print("First launch, setting NSUserDefault.")
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
+        }
         
         // background gradient
         self.view.backgroundColor = UIColor.blackColor()
@@ -39,34 +47,55 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         gradientLayer.locations = [0.0, 1.0]
         self.view.layer.insertSublayer(gradientLayer, atIndex:0)
         
-        // default content
+        // styles for cell
+        tableView.separatorStyle = .None
+        tableView.backgroundColor = UIColor.clearColor()
+        
+        // init table view
         tableView.dataSource = self
         tableView.delegate = self
         
         
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         
-        //let defaultItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
-        
-        //defaultItem.task = "Swipe down to create, swipe left/right to delete"
         // start
         updateTasks()
         
     }
     
     
+    // lock orientation at portrait
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
     }
 
+    
+    
+    
+    
+    
+    
+    
+    // make status bar hidden for "full screen" effect
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // dim background for segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         dim(.In, alpha: dimLevel, speed: dimSpeed)
     }
     
+    // undim background and update table when coming back from segue
     @IBAction func unwindFromNewTask(segue: UIStoryboardSegue) {
         dim(.Out, speed: dimSpeed)
         updateTasks()
@@ -74,6 +103,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.tableView.reloadData()
         })
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // when view is dragged down, do the following:
+    //      1) play sound
+    //      2) show new task segue
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        // check whether the user pulled down far enough
+        if -scrollView.contentOffset.y > tableView.rowHeight {
+            AudioServicesPlaySystemSound(systemSoundId)
+            performSegueWithIdentifier("newTaskSwipe", sender: scrollView)
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    // UTIL FUNCTIONS FOR STORAGE
+    
+    
     
     func addTaskItem(task: String) {
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
@@ -98,6 +161,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    
+    
     func updateTasks() -> [TaskItem]? {
         do {
             let fetchRequest = NSFetchRequest(entityName: "TaskItem")
@@ -108,16 +173,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             // failure
             print("Fetch failed: \(error.localizedDescription)")
             return nil
-        }
-    }
-    
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        // check whether the user pulled down far enough
-        if -scrollView.contentOffset.y > tableView.rowHeight {
-            AudioServicesPlaySystemSound(systemSoundId)
-            //refreshControl.endRefreshing()
-            performSegueWithIdentifier("newTaskSwipe", sender: scrollView)
         }
     }
     
