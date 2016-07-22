@@ -31,10 +31,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let launchedBefore = NSUserDefaults.standardUserDefaults().boolForKey("launchedBefore")
         if launchedBefore  {
-            print("Not first launch.")
+            print("Welcome Back")
         }
         else {
-            print("First launch, setting NSUserDefault.")
+            print("First launch, showing Instructions.")
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "launchedBefore")
         }
         
