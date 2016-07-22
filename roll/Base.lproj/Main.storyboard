@@ -80,7 +80,7 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-UltraLight" family="Avenir Next" pointSize="15"/>
                                         <state key="normal" title="X"/>
                                         <connections>
-                                            <segue destination="thj-xy-7CW" kind="unwind" unwindAction="unwindFromNewTask:" id="aY3-y5-UXJ"/>
+                                            <segue destination="thj-xy-7CW" kind="unwind" identifier="unwindFromNewTaskManual" unwindAction="unwindFromNewTask:" id="aY3-y5-UXJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -104,6 +104,7 @@
                     <connections>
                         <outlet property="popupView" destination="PFL-cK-wqI" id="dMs-gd-8tL"/>
                         <outlet property="taskTextField" destination="5dk-zb-JSv" id="i6p-CB-wGv"/>
+                        <segue destination="thj-xy-7CW" kind="unwind" unwindAction="unwindFromNewTask:" id="BjB-p6-h39"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O15-Cg-xC5" userLabel="First Responder" sceneMemberID="firstResponder"/>

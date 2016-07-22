@@ -49,11 +49,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //let defaultItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
         
         //defaultItem.task = "Swipe down to create, swipe left/right to delete"
-        
         // start
         updateTasks()
         
     }
+    
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.Portrait
@@ -69,13 +69,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBAction func unwindFromNewTask(segue: UIStoryboardSegue) {
         dim(.Out, speed: dimSpeed)
+        updateTasks()
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
     }
     
     func addTaskItem(task: String) {
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
         
         newItem.task = task
-        
         updateTasks()
     }
     
@@ -126,6 +129,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        updateTasks()
         return taskItems!.count
     }
     

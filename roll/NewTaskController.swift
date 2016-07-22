@@ -48,6 +48,7 @@ class NewTaskController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         taskTextField.resignFirstResponder()
         ViewController().addTaskItem(taskTextField.text!)
+        self.performSegueWithIdentifier("unwindFromNewTaskManual", sender: self)
         return true
     }
     
