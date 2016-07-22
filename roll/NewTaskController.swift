@@ -28,6 +28,10 @@ class NewTaskController: UIViewController, UITextFieldDelegate {
         popupView.layer.masksToBounds = false
         
         taskTextField.delegate = self
+        
+
+        // open keyboard
+        taskTextField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +46,7 @@ class NewTaskController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         taskTextField.resignFirstResponder()
-        
+        ViewController().addTaskItem(taskTextField.text!)
         return true
     }
     

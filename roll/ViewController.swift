@@ -29,6 +29,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.separatorStyle = .None
         tableView.backgroundColor = UIColor.clearColor()
         
+        
         // background gradient
         self.view.backgroundColor = UIColor.blackColor()
         gradientLayer.frame = self.view.bounds
@@ -45,9 +46,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.registerClass(TableViewCell.self, forCellReuseIdentifier: "cell")
         
-        let defaultItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
+        //let defaultItem = NSEntityDescription.insertNewObjectForEntityForName("TaskItem", inManagedObjectContext: self.managedObjectContext) as! TaskItem
         
-        defaultItem.task = "Swipe down to create, swipe left/right to delete"
+        //defaultItem.task = "Swipe down to create, swipe left/right to delete"
+        
+        // start
         updateTasks()
         
     }
@@ -80,11 +83,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let index = (taskItems! as NSArray).indexOfObject(taskItem)
         if index == NSNotFound { return }
         
-        // could removeAtIndex in the loop but keep it here for when indexOfObject works
-        //taskItems!.removeAtIndex(index)
-        
         managedObjectContext.deleteObject(taskItems![index])
+        taskItems!.removeAtIndex(index)
         updateTasks()
+        
         // use the UITableView to animate the removal of this row
         tableView.beginUpdates()
         let indexPathForRow = NSIndexPath(forRow: index, inSection: 0)
@@ -98,9 +100,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let fetchRequest = NSFetchRequest(entityName: "TaskItem")
             let fetchResults = try managedObjectContext.executeFetchRequest(fetchRequest) as? [TaskItem]
             taskItems = fetchResults!
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.tableView.reloadData()
-            })
             return taskItems!
         } catch let error as NSError {
             // failure
