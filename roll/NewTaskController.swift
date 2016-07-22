@@ -31,6 +31,7 @@ class NewTaskController: UIViewController, UITextFieldDelegate {
         
 
         // open keyboard
+        taskTextField.keyboardAppearance = UIKeyboardAppearance.Alert
         taskTextField.becomeFirstResponder()
     }
 
